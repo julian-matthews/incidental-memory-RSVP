@@ -1,20 +1,28 @@
 ![alt text][logo]
-# THE PRACTICE EXPERIMENT
-A simple and fastidiously commented entry-point into **Psychtoolbox** and how our **MATLAB** psychophysics experiments actually operate.
+# ISSA2017 Psychophysics Hands-on Project:
+
+## Coordinators
+1. Nao Tsuchiya (Monash University)
+2. Julian Matthews (Monash University)
+
+## Outline
+The aim of this hands-on project is to introduce two exemplar visual psychophysics paradigms. By experiencing what psychophysics tasks are like, students will be able to design their own experiment. Also, students will learn some basic analysis concepts: objective performance and metacognitive sensitivity, each based on signal detection theory. A broader aim is to consider what these behavioural techniques might tell us about consciousness and related processes (such as attention, memory and metacognition). 
+
+Here we provide MATLAB code for building psychophysics experiments that employ **Rapid Serial Visual Presentation** (RSVP). Students are encouraged to modify this code to examine their own research questions in collaboration with the coordinators.
+
+## Rapid Serial Visual Presentation (RSVP)
 
 ## You will need: 
 1. **MATLAB**
-  * Available for free as a Monash student: http://intranet.monash.edu.au/esolutions/software/catalogue/
 2. **Psychtoolbox**
   * Available here: http://psychtoolbox.org/
 
 ## Description:
-This _practice_ experiment is intended for those with a basic knowledge of **MATLAB** that hope to grasp the essentials of a running a simple perceptual experiment employing **Psychtoolbox**.
+The experiment included in this repository employs RSVP to further explore our recent work on [incidental memory in visual search](https://www.ncbi.nlm.nih.gov/pubmed/27507869).  
 
-Clone the repository and have a play, if you make some cool updates to the task (perhaps some analysis scripts or extended, helpful comments) open a pull request and we might add it!
+Clone or download the repository to examine how it works. 
 
-The critical m-file for running the experiment is in the `scripts` subfolder: [`practice_runExp.m`](./scripts/)
-
+The critical m-files for running the experiment is in the [`scripts`](./scripts/) subfolder.
 
 ![alt_text][avatar]
 
