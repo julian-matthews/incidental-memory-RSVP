@@ -1,6 +1,6 @@
 ![alt text][logo]
-# ISSA2017 Psychophysics Hands-on Project:
-
+# Rapid Serial Visual Presentation
+**ISSA2017 Psychophysics Hands-on Project**
 ## Coordinators
 1. Nao Tsuchiya (Monash University)
 2. Julian Matthews (Monash University)
