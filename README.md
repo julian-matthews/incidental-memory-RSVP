@@ -7,11 +7,9 @@
 3. Katsunori Miyahara (Rikkyo University)
 
 ## Outline
-The aim of this hands-on project is to introduce two exemplar visual psychophysics paradigms. By experiencing what psychophysics tasks are like, students will be able to design their own experiment. Also, students will learn some basic analysis concepts: objective performance and [metacognitive sensitivity](http://www.sciencedirect.com/science/article/pii/S105381000090494X), each based on signal detection theory. A broader aim is to consider what these behavioural techniques might tell us about consciousness and related processes (such as attention, memory and metacognition). 
+The aim of this hands-on project is to introduce two exemplar visual psychophysics paradigms. By experiencing what psychophysics tasks are like, students will be able to design their own experiment. Also, students will learn some basic analysis concepts: objective performance and [metacognitive sensitivity](http://www.sciencedirect.com/science/article/pii/S105381000090494X), each based on [signal detection theory](http://psycnet.apa.org/psycinfo/2004-19022-000). A broader aim is to consider what these behavioural techniques might tell us about consciousness and related processes (such as attention, memory and metacognition). 
 
 Here we provide MATLAB code for building psychophysics experiments that employ **Rapid Serial Visual Presentation** (RSVP). Students are encouraged to modify this code to examine their own research questions in collaboration with the coordinators.
-
-## Rapid Serial Visual Presentation (RSVP)
 
 ## You will need: 
 1. **MATLAB**
