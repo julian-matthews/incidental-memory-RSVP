@@ -19,7 +19,7 @@ Here we provide MATLAB code for building psychophysics experiments that employ *
 ## Description:
 The experiment included in this repository employs RSVP to further explore our recent work on [incidental memory in visual search](https://www.ncbi.nlm.nih.gov/pubmed/27507869). Clone or download the repository to examine how it works. 
 
-The critical m-files for running the experiment is in the [`scripts`](./scripts/) subfolder.
+The critical m-files for running the experiment are in the [`scripts`](./scripts/) subfolder.
 
 ![alt_text][avatar]
 
