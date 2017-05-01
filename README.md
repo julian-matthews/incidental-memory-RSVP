@@ -18,6 +18,6 @@ The critical m-file for running the experiment is in the `scripts` subfolder: [`
 
 ![alt_text][avatar]
 
-[logo]: https://github.com/julian-matthews/MoNoC-practice-experiment/master/MoNoC_minimal.png "Monash Neuroscience of Consciousness"
+[logo]: https://raw.githubusercontent.com/julian-matthews/MoNoC-practice-experiment/master/MoNoC_minimal.png "Monash Neuroscience of Consciousness"
 
-[avatar]: https://avatars0.githubusercontent.com/u/18410581?v=3&s=96 "I'm Julian, welcome to MoNoC"
+[avatar]: https://avatars0.githubusercontent.com/u/18410581?v=3&s=96 "I'm Julian"
