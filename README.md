@@ -14,13 +14,10 @@ Here we provide MATLAB code for building psychophysics experiments that employ *
 
 ## You will need: 
 1. **MATLAB**
-2. **Psychtoolbox**
-  * Available here: http://psychtoolbox.org/
+2. [**Psychtoolbox**](http://psychtoolbox.org/)
 
 ## Description:
-The experiment included in this repository employs RSVP to further explore our recent work on [incidental memory in visual search](https://www.ncbi.nlm.nih.gov/pubmed/27507869).  
-
-Clone or download the repository to examine how it works. 
+The experiment included in this repository employs RSVP to further explore our recent work on [incidental memory in visual search](https://www.ncbi.nlm.nih.gov/pubmed/27507869). Clone or download the repository to examine how it works. 
 
 The critical m-files for running the experiment is in the [`scripts`](./scripts/) subfolder.
 
