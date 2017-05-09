@@ -36,7 +36,7 @@ title('Experiment 1a: Target Accuracy');
 %
 % If proportion of target hits is low this raises the
 % possibility that this subject may have paid undue attention to the
-% incidental memory task.Incidental memory was only tested if the target 
+% incidental memory task. Incidental memory was only tested if the target 
 % was successfully detected.
 
 %% Probe Objective Performance at each Lag Position
@@ -189,16 +189,13 @@ box off
 colormap('white');
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
 set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .8])
+ylim([0.4 .9])
 xlim([0 5])
 ylabel('Type-I AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 1b: Probe Objective Performance');
 
 %%
-%
-% NB. Change in y-axes compared to Experiment 1a
-%
 % Objective Performance (Type-I AUC) for probe detection at each lag 
 % position in Experiment 1b. Black error bars reflect standard error of 
 % the mean between subjects. Error is considerably lower between blocks,
@@ -277,3 +274,441 @@ title('Experiment 1b: Probe Confidence');
 % Within-subject statistics can be performed here to reveal such a
 % difference.
 
+%% EXPERIMENT 2a: ACROSS-SCENE, UPRIGHT, INCIDENTAL MEMORY 
+% Our novel procedure that combined face stimuli from all of our crowd
+% photographs (4225 faces in total). This experiment was performed with a
+% new set of participants when compared to Experiment 1, this group also
+% conducted the upright version of our "no-target" experiment (3a).
+
+%% Target accuracy (hits versus misses/false alarms)
+
+figure;
+hits = COND(3).RUNS.NUMS./40;
+deviation_hits = std(hits,0,2);
+over_hits = sum(COND(3).RUNS.NUMS,2)./320;
+barwitherr(deviation_hits,over_hits);
+hold on
+h = line([0 13],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+ylim([0.2 1])
+xlim([0 13])
+ylabel('Proportion of Hits');
+xlabel('Subject');
+title('Experiment 2a: Target Accuracy');
+
+%%
+%
+% NB. These are new subjects compared to Experiment 1
+%
+% Proportion of targets accurately detected for each participant in
+% Experiment 2a. Error bars reflect standard error of the mean between
+% experimental blocks (8 in total).
+%
+% Proportion of hits is very high for all subjects. Seems unlikely that
+% undue attention was paid to the probe task for these participants.
+
+%% Probe Objective Performance at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(3).LAGS.OBJPER);
+barwitherr(SEM_subj,COND(3).LAGS.OP_means);
+hold on
+eb = errorbar(COND(3).LAGS.OP_means,COND(3).LAGS.OP_SEMs);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 .9])
+xlim([0 5])
+ylabel('Type-I AUC');
+xlabel('Lag Position relative to Target');
+title('Experiment 2a: Probe Objective Performance');
+
+%%
+% Objective Performance (Type-I AUC) for probe detection at each lag 
+% position in Experiment 2a. Black error bars reflect standard error of 
+% the mean between subjects. Error is considerably lower between blocks,
+% these values are superimposed in red (averaged between subjects).
+%
+% We see strong probe detection for all lags with a steady moderation in
+% performance as probes appear further from the target. Performance appears
+% above chance for all lags and is especially strong for lag position -1
+% (approaching ceiling for some subjects judging from between subject
+% error). 
+%
+% There appears to be no significant difference between lags -5 and -7 
+% possibly as a result of a primacy effect for the -7 position.
+
+%% Probe Metacognition at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(3).LAGS.META);
+barwitherr(SEM_subj,COND(3).LAGS.Meta_means);
+hold on
+eb = errorbar(COND(3).LAGS.Meta_means,COND(3).LAGS.Meta_SEMs);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 .75])
+xlim([0 5])
+ylabel('Type-II AUC');
+xlabel('Lag Position relative to Target');
+title('Experiment 2a: Probe Metacognition');
+
+%%
+% Metacognition (Type-II AUC) for probe detection at each lag position in
+% Experiment 2a. Error bars as usual.
+%
+% Metacognition appears to be strong for all lag positions and, like
+% performance, drops as the probe appears further from the target. No
+% obvious difference in the -5 & -7 lags which is possibly moderated by the
+% primacy effect discussed above.
+
+%% Probe Confidence at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(3).LAGS.CONFID);
+barwitherr(SEM_subj,COND(3).LAGS.Conf_means);
+hold on
+eb = errorbar(COND(3).LAGS.Conf_means,COND(3).LAGS.Conf_SEMs);
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+set(gca,'YTick',1:4);
+ylim([0.75 4.25])
+xlim([0 5])
+ylabel('Confidence Level');
+xlabel('Lag Position relative to Target');
+title('Experiment 2a: Probe Confidence');
+
+%%
+% Confidence for probe detection at each lag position in Experiment 2a.
+% Error bars are reflected in the same way as the above analyses.
+%
+% Confidence varies slightly between the lag positions but is unlikely to
+% reach significance. Overall, confidence is lower for this experiment than
+% the upright, within-scene version but these are different participants so
+% between subject statistics would be required to support a significant
+% difference.
+
+%% EXPERIMENT 2b: ACROSS-SCENE, INVERTED, INCIDENTAL MEMORY 
+% The inverted version of our novel experiment that combined face images
+% from all crowd photographs, further limiting the influence of semantic
+% coherency and contextual cues that might be present in each image but
+% emphasising the influence of memorable, low-level details from specific
+% faces.
+%
+% This analysis was performed for a new set of participants when compared
+% to Experiment 2a (and Experiment 1) so if statistical comparison is made,
+% it will be between subjects.
+
+%% Target accuracy (hits versus misses/false alarms)
+
+figure;
+hits = COND(4).RUNS.NUMS./40;
+deviation_hits = std(hits,0,2);
+over_hits = sum(COND(4).RUNS.NUMS,2)./320;
+barwitherr(deviation_hits,over_hits);
+hold on
+h = line([0 13],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+ylim([0.2 1])
+xlim([0 13])
+ylabel('Proportion of Hits');
+xlabel('Subject');
+title('Experiment 2b: Target Accuracy');
+
+%%
+% NB. These are NOT the same subjects as Experiment 2a 
+%
+% Proportion of targets accurately detected for each participant in
+% Experiment 2b. Error bars reflect standard error of the mean between
+% experimental blocks (8 in total).
+%
+% Strong performance on this task overall and certainly better than the
+% within-scene version of this inverted face task. Using across-scene faces
+% may have introduced a greater number of salient low-level details that
+% permitted strong performance in this task.
+
+%% Probe Objective Performance at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(4).LAGS.OBJPER);
+barwitherr(SEM_subj,COND(4).LAGS.OP_means);
+hold on
+eb = errorbar(COND(4).LAGS.OP_means,COND(4).LAGS.OP_SEMs);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 .9])
+xlim([0 5])
+ylabel('Type-I AUC');
+xlabel('Lag Position relative to Target');
+title('Experiment 2b: Probe Objective Performance');
+
+%%
+% Objective Performance (Type-I AUC) for probe detection at each lag 
+% position in Experiment 2b. Usual error bars reflecting SEMs between
+% subjects and, in red, over blocks while averaging between subjects.
+%
+% Probe performance is still quite strong for the across-scene task and
+% appears stronger than the inverted, within-scene version of this
+% experiment (although that was conducted with a different set of subjects
+% so between subject statistics apply).
+%
+% We see the influence of primacy and receny effects as discussed for other
+% versions of this task though statistically significant differences are
+% only obvious between lags -1 and -3 (such that lag -1 is associated with
+% the strongest probe performance).
+
+%% Probe Metacognition at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(4).LAGS.META);
+barwitherr(SEM_subj,COND(4).LAGS.Meta_means);
+hold on
+eb = errorbar(COND(4).LAGS.Meta_means,COND(4).LAGS.Meta_SEMs);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 .75])
+xlim([0 5])
+ylabel('Type-II AUC');
+xlabel('Lag Position relative to Target');
+title('Experiment 2b: Probe Metacognition');
+
+%%
+% Metacognition (Type-II AUC) for probe detection at each lag position in
+% Experiment 2b. Error bars as above.
+%
+% Again, metacognition appears to be above chance for all lag positions but
+% quite unlikely that a significant difference exists between any of the
+% positions. In comparison to Experiment 1b, metacognition seems stronger 
+% overall but between subject statistics would be required to show this.
+
+%% Probe Confidence at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(4).LAGS.CONFID);
+barwitherr(SEM_subj,COND(4).LAGS.Conf_means);
+hold on
+eb = errorbar(COND(4).LAGS.Conf_means,COND(4).LAGS.Conf_SEMs);
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+set(gca,'YTick',1:4);
+ylim([0.75 4.25])
+xlim([0 5])
+ylabel('Confidence Level');
+xlabel('Lag Position relative to Target');
+title('Experiment 2b: Probe Confidence');
+
+%%
+% Confidence for probe detection at each lag position in Experiment 2b.
+% Error bars as usual.
+%
+% Confidence appears unchanged between lags. Overall, this inverted version
+% has slightly lower confidence than the upright, across-scene experiment
+% but this is a between subjects difference so statistics may not bear it
+% out.
+
+%% EXPERIMENT 3a: ACROSS-SCENE, UPRIGHT, EXPLICIT MEMORY 
+% The contrasting conditions for Experiment 2. This version of the
+% across-scene task did not involve target search. Instead, subjects were
+% instructed to explicitly remember every face. The subjects from
+% Experiment 2a also participated in Experiment 3a.
+%
+% Since no target search was required we will skip straight to our analysis
+% of probe measures.
+
+%% Probe Objective Performance at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(5).LAGS.OBJPER);
+barwitherr(SEM_subj,COND(5).LAGS.OP_means);
+hold on
+eb = errorbar(COND(5).LAGS.OP_means,COND(5).LAGS.OP_SEMs);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 .9])
+xlim([0 5])
+ylabel('Type-I AUC');
+xlabel('Lag Position relative to final face');
+title('Experiment 3a: Probe Objective Performance');
+
+%%
+% Objective Performance (Type-I AUC) for probe detection at each lag 
+% position in Experiment 3a. We use the typical error bar conventions for
+% this document.
+%
+% These results are comparative to the incidental memory version of this
+% task (2a) although performance is slightly stronger for each lag.
+% Within-subjects statistics can be used to examine whether the difference
+% reaches significance.
+%
+% There is unlikely to be a significant difference in performance between
+% the -5 and -7 lags although this might be the result of a small primacy
+% effect as discussed above.
+
+%% Probe Metacognition at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(5).LAGS.META);
+barwitherr(SEM_subj,COND(5).LAGS.Meta_means);
+hold on
+eb = errorbar(COND(5).LAGS.Meta_means,COND(5).LAGS.Meta_SEMs);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 .75])
+xlim([0 5])
+ylabel('Type-II AUC');
+xlabel('Lag Position relative to final face');
+title('Experiment 3a: Probe Metacognition');
+
+%%
+% Metacognition (Type-II AUC) for probe detection at each lag position in
+% Experiment 3a. Error bars as usual.
+%
+% Again, we see strong metacognition for all lag positions which is
+% unlikely to differ significantly. 
+
+%% Probe Confidence at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(5).LAGS.CONFID);
+barwitherr(SEM_subj,COND(5).LAGS.Conf_means);
+hold on
+eb = errorbar(COND(5).LAGS.Conf_means,COND(5).LAGS.Conf_SEMs);
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+set(gca,'YTick',1:4);
+ylim([0.75 4.25])
+xlim([0 5])
+ylabel('Confidence Level');
+xlabel('Lag Position relative to final face');
+title('Experiment 3a: Probe Confidence');
+
+%%
+% Confidence for probe detection at each lag position in Experiment 3a.
+% Standard SEM error bars.
+%
+% A trend of confidence lowering as probes appear eariler in the sequence
+% can be seen but this is unlikely to reach significance judging from the
+% error bars between blocks. Confidence judgments do not appear to differ
+% drastically when compared to the incidental version of this task.
+
+%% EXPERIMENT 3b: ACROSS-SCENE, INVERTED, EXPLICIT MEMORY 
+% The inverted version of our explicit memory experiment. As in Experiment
+% 3a, no target search was conducted. Subjects focussed on all items in the
+% sequence.
+%
+% The subjects in this experiment also conducted Experiment 2b.
+
+%% Probe Objective Performance at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(6).LAGS.OBJPER);
+barwitherr(SEM_subj,COND(6).LAGS.OP_means);
+hold on
+eb = errorbar(COND(6).LAGS.OP_means,COND(6).LAGS.OP_SEMs);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 .9])
+xlim([0 5])
+ylabel('Type-I AUC');
+xlabel('Lag Position relative to final face');
+title('Experiment 3b: Probe Objective Performance');
+
+%%
+% Objective Performance (Type-I AUC) for probe detection at each lag 
+% position in Experiment 3b. Error bars as usual.
+%
+% Probe performance is strong for the inverted version of the explicit
+% memory task. All lag positions should be significantly above chance. We
+% appear to see a stronger effect between lag positions than in other
+% versions of the task. Lag -1 is definitely stronger than the later lags.
+
+%% Probe Metacognition at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(6).LAGS.META);
+barwitherr(SEM_subj,COND(6).LAGS.Meta_means);
+hold on
+eb = errorbar(COND(6).LAGS.Meta_means,COND(6).LAGS.Meta_SEMs);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 .75])
+xlim([0 5])
+ylabel('Type-II AUC');
+xlabel('Lag Position relative to final face');
+title('Experiment 3b: Probe Metacognition');
+
+%%
+% Metacognition (Type-II AUC) for probe detection at each lag position in
+% Experiment 3b. Error bars as above.
+%
+% Metacognition is likely to be above chance for all lag positions although
+% we see an almost step-like difference between the -1/-3 lags and the
+% later lags of -5/-7. This is likely to hold up to significance testing.
+
+%% Probe Confidence at each Lag Position
+
+figure;
+SEM_subj = nanstd(COND(6).LAGS.CONFID);
+barwitherr(SEM_subj,COND(6).LAGS.Conf_means);
+hold on
+eb = errorbar(COND(6).LAGS.Conf_means,COND(6).LAGS.Conf_SEMs);
+box off
+colormap('white');
+set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
+set(gca,'XTickLabel',{'-1','-3','-5','-7'});
+set(gca,'YTick',1:4);
+ylim([0.75 4.25])
+xlim([0 5])
+ylabel('Confidence Level');
+xlabel('Lag Position relative to final face');
+title('Experiment 3b: Probe Confidence');
+
+%%
+% Confidence for probe detection at each lag position in Experiment 3b.
+% Error bars as usual.
+%
+% Confidence is quite comparative between lag positions. Appears to be
+% lower overall than the upright version of this task and possibly lower
+% than the incidental memory version of this task which might reflect
+% changes in metacognition between these Experiments.
