@@ -1,9 +1,7 @@
-% Manuscript analysis publish version
-%
+% BEHAVIOURAL RSVP: MANUSCRIPT PUBLISH SCRIPT
 % Creates summary of data for Behavioural RSVP Manuscript
  
-% Load smp_dat from RSVP-repeated-subj-data.m file or run the following:
-%
+% Run the following to conduct analysis:
 % low_level_analysis
 % simple_analysis
 
@@ -15,6 +13,7 @@
 
 %% Target accuracy (hits versus misses/false alarms)
 
+figure;
 hits = COND(1).RUNS.NUMS./40;
 deviation_hits = std(hits,0,2);
 over_hits = sum(COND(1).RUNS.NUMS,2)./320;
@@ -42,6 +41,7 @@ title('Experiment 1a: Target Accuracy');
 
 %% Probe Objective Performance at each Lag Position
 
+figure;
 SEM_subj = nanstd(COND(1).LAGS.OBJPER);
 barwitherr(SEM_subj,COND(1).LAGS.OP_means);
 hold on
@@ -72,6 +72,7 @@ title('Experiment 1a: Probe Objective Performance');
 
 %% Probe Metacognition at each Lag Position
 
+figure;
 SEM_subj = nanstd(COND(1).LAGS.META);
 barwitherr(SEM_subj,COND(1).LAGS.Meta_means);
 hold on
@@ -106,6 +107,7 @@ title('Experiment 1a: Probe Metacognition');
 
 %% Probe Confidence at each Lag Position
 
+figure;
 SEM_subj = nanstd(COND(1).LAGS.CONFID);
 barwitherr(SEM_subj,COND(1).LAGS.Conf_means);
 hold on
@@ -143,6 +145,7 @@ title('Experiment 1a: Probe Confidence');
 
 %% Target accuracy (hits versus misses/false alarms)
 
+figure;
 hits = COND(2).RUNS.NUMS./40;
 deviation_hits = std(hits,0,2);
 over_hits = sum(COND(2).RUNS.NUMS,2)./320;
@@ -175,6 +178,7 @@ title('Experiment 1b: Target Accuracy');
 
 %% Probe Objective Performance at each Lag Position
 
+figure;
 SEM_subj = nanstd(COND(2).LAGS.OBJPER);
 barwitherr(SEM_subj,COND(2).LAGS.OP_means);
 hold on
@@ -209,6 +213,7 @@ title('Experiment 1b: Probe Objective Performance');
 
 %% Probe Metacognition at each Lag Position
 
+figure;
 SEM_subj = nanstd(COND(2).LAGS.META);
 barwitherr(SEM_subj,COND(2).LAGS.Meta_means);
 hold on
@@ -241,6 +246,7 @@ title('Experiment 1b: Probe Metacognition');
 
 %% Probe Confidence at each Lag Position
 
+figure;
 SEM_subj = nanstd(COND(2).LAGS.CONFID);
 barwitherr(SEM_subj,COND(2).LAGS.Conf_means);
 hold on
