@@ -711,4 +711,42 @@ title('Experiment 3b: Probe Confidence');
 % Confidence is quite comparative between lag positions. Appears to be
 % lower overall than the upright version of this task and possibly lower
 % than the incidental memory version of this task which might reflect
-% changes in metacognition between these Experiments.
+% changes in metacognition between these experiments.
+
+%% COMPARISONS BETWEEN CONDITIONS
+% Here is a summary of some basic comparisons between relevant conditions.
+
+figure;
+MEAN_subj = zeros(6,4);
+SEM_subj = zeros(6,4);
+for condition = 1:6
+    MEAN_subj(condition,:) = nanmean(COND(condition).LAGS.OBJPER);
+    SEM_subj(condition,:) = nanstd(COND(condition).LAGS.OBJPER);
+end
+xvalues = [.75:.1:1.25;1.75:.1:2.25;2.75:.1:3.25;3.75:.1:4.25];
+errorbar(xvalues,MEAN_subj',SEM_subj','o');
+hold on
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'});
+ylim([0.4 1])
+xlim([0.25 4.75])
+legend('1a: TWU','1b: TWI','2a: TAU','2b: TAI','3a: NAU','3b: NAI')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Objective Performance comparison across lags');
+
+%%
+% NB. Subjects (n=12) shared between:
+
+%% 
+% * Experiments 1a & 1b
+% * Experiments 2a & 3a
+% * Experiments 2b & 3b
+
+%% REPORTABLE STATISTICS
+% Here's a summary of values that might be reported in the manuscript and
+% some basic significance testing.
+
