@@ -15,7 +15,7 @@
 
 figure;
 hits = COND(1).RUNS.NUMS./40;
-deviation_hits = std(hits,0,2);
+deviation_hits = std(hits,0,2)/sqrt(size(hits,2)); % SEM
 over_hits = sum(COND(1).RUNS.NUMS,2)./320;
 barwitherr(deviation_hits,over_hits);
 hold on
@@ -42,7 +42,7 @@ title('Experiment 1a: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(1).LAGS.OBJPER);
+SEM_subj = nanstd(COND(1).LAGS.OBJPER)/sqrt(size(COND(1).LAGS.OBJPER,2)); % SEM
 barwitherr(SEM_subj,COND(1).LAGS.OP_means);
 hold on
 eb = errorbar(COND(1).LAGS.OP_means,COND(1).LAGS.OP_SEMs);
@@ -73,7 +73,7 @@ title('Experiment 1a: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(1).LAGS.META);
+SEM_subj = nanstd(COND(1).LAGS.META)/sqrt(size(COND(1).LAGS.META,2)); % SEM
 barwitherr(SEM_subj,COND(1).LAGS.Meta_means);
 hold on
 eb = errorbar(COND(1).LAGS.Meta_means,COND(1).LAGS.Meta_SEMs);
@@ -108,7 +108,7 @@ title('Experiment 1a: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(1).LAGS.CONFID);
+SEM_subj = nanstd(COND(1).LAGS.CONFID)/sqrt(size(COND(1).LAGS.CONFID,2)); % SEM
 barwitherr(SEM_subj,COND(1).LAGS.Conf_means);
 hold on
 eb = errorbar(COND(1).LAGS.Conf_means,COND(1).LAGS.Conf_SEMs);
@@ -147,7 +147,7 @@ title('Experiment 1a: Probe Confidence');
 
 figure;
 hits = COND(2).RUNS.NUMS./40;
-deviation_hits = std(hits,0,2);
+deviation_hits = std(hits,0,2)/sqrt(size(hits,2));
 over_hits = sum(COND(2).RUNS.NUMS,2)./320;
 barwitherr(deviation_hits,over_hits);
 hold on
@@ -179,7 +179,7 @@ title('Experiment 1b: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(2).LAGS.OBJPER);
+SEM_subj = nanstd(COND(2).LAGS.OBJPER)/sqrt(size(COND(2).LAGS.OBJPER,2)); % SEM
 barwitherr(SEM_subj,COND(2).LAGS.OP_means);
 hold on
 eb = errorbar(COND(2).LAGS.OP_means,COND(2).LAGS.OP_SEMs);
@@ -211,7 +211,7 @@ title('Experiment 1b: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(2).LAGS.META);
+SEM_subj = nanstd(COND(2).LAGS.META)/sqrt(size(COND(2).LAGS.META,2));
 barwitherr(SEM_subj,COND(2).LAGS.Meta_means);
 hold on
 eb = errorbar(COND(2).LAGS.Meta_means,COND(2).LAGS.Meta_SEMs);
@@ -244,7 +244,7 @@ title('Experiment 1b: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(2).LAGS.CONFID);
+SEM_subj = nanstd(COND(2).LAGS.CONFID)/sqrt(size(COND(2).LAGS.CONFID,2));
 barwitherr(SEM_subj,COND(2).LAGS.Conf_means);
 hold on
 eb = errorbar(COND(2).LAGS.Conf_means,COND(2).LAGS.Conf_SEMs);
@@ -284,7 +284,7 @@ title('Experiment 1b: Probe Confidence');
 
 figure;
 hits = COND(3).RUNS.NUMS./40;
-deviation_hits = std(hits,0,2);
+deviation_hits = std(hits,0,2)/sqrt(size(hits,2));
 over_hits = sum(COND(3).RUNS.NUMS,2)./320;
 barwitherr(deviation_hits,over_hits);
 hold on
@@ -312,7 +312,7 @@ title('Experiment 2a: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(3).LAGS.OBJPER);
+SEM_subj = nanstd(COND(3).LAGS.OBJPER)/sqrt(size(COND(3).LAGS.OBJPER,2));
 barwitherr(SEM_subj,COND(3).LAGS.OP_means);
 hold on
 eb = errorbar(COND(3).LAGS.OP_means,COND(3).LAGS.OP_SEMs);
@@ -346,7 +346,7 @@ title('Experiment 2a: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(3).LAGS.META);
+SEM_subj = nanstd(COND(3).LAGS.META)/sqrt(size(COND(3).LAGS.META,2));
 barwitherr(SEM_subj,COND(3).LAGS.Meta_means);
 hold on
 eb = errorbar(COND(3).LAGS.Meta_means,COND(3).LAGS.Meta_SEMs);
@@ -374,7 +374,7 @@ title('Experiment 2a: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(3).LAGS.CONFID);
+SEM_subj = nanstd(COND(3).LAGS.CONFID)/sqrt(size(COND(3).LAGS.CONFID,2));
 barwitherr(SEM_subj,COND(3).LAGS.Conf_means);
 hold on
 eb = errorbar(COND(3).LAGS.Conf_means,COND(3).LAGS.Conf_SEMs);
@@ -414,7 +414,7 @@ title('Experiment 2a: Probe Confidence');
 
 figure;
 hits = COND(4).RUNS.NUMS./40;
-deviation_hits = std(hits,0,2);
+deviation_hits = std(hits,0,2)/sqrt(size(hits,2));
 over_hits = sum(COND(4).RUNS.NUMS,2)./320;
 barwitherr(deviation_hits,over_hits);
 hold on
@@ -443,7 +443,7 @@ title('Experiment 2b: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(4).LAGS.OBJPER);
+SEM_subj = nanstd(COND(4).LAGS.OBJPER)/sqrt(size(COND(4).LAGS.OBJPER,2));
 barwitherr(SEM_subj,COND(4).LAGS.OP_means);
 hold on
 eb = errorbar(COND(4).LAGS.OP_means,COND(4).LAGS.OP_SEMs);
@@ -477,7 +477,7 @@ title('Experiment 2b: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(4).LAGS.META);
+SEM_subj = nanstd(COND(4).LAGS.META)/sqrt(size(COND(4).LAGS.META,2));
 barwitherr(SEM_subj,COND(4).LAGS.Meta_means);
 hold on
 eb = errorbar(COND(4).LAGS.Meta_means,COND(4).LAGS.Meta_SEMs);
@@ -505,7 +505,7 @@ title('Experiment 2b: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(4).LAGS.CONFID);
+SEM_subj = nanstd(COND(4).LAGS.CONFID)/sqrt(size(COND(4).LAGS.CONFID,2));
 barwitherr(SEM_subj,COND(4).LAGS.Conf_means);
 hold on
 eb = errorbar(COND(4).LAGS.Conf_means,COND(4).LAGS.Conf_SEMs);
@@ -541,7 +541,7 @@ title('Experiment 2b: Probe Confidence');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(5).LAGS.OBJPER);
+SEM_subj = nanstd(COND(5).LAGS.OBJPER)/sqrt(size(COND(5).LAGS.OBJPER,2));
 barwitherr(SEM_subj,COND(5).LAGS.OP_means);
 hold on
 eb = errorbar(COND(5).LAGS.OP_means,COND(5).LAGS.OP_SEMs);
@@ -574,7 +574,7 @@ title('Experiment 3a: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(5).LAGS.META);
+SEM_subj = nanstd(COND(5).LAGS.META)/sqrt(size(COND(5).LAGS.META,2));
 barwitherr(SEM_subj,COND(5).LAGS.Meta_means);
 hold on
 eb = errorbar(COND(5).LAGS.Meta_means,COND(5).LAGS.Meta_SEMs);
@@ -600,7 +600,7 @@ title('Experiment 3a: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(5).LAGS.CONFID);
+SEM_subj = nanstd(COND(5).LAGS.CONFID)/sqrt(size(COND(5).LAGS.CONFID,2));
 barwitherr(SEM_subj,COND(5).LAGS.Conf_means);
 hold on
 eb = errorbar(COND(5).LAGS.Conf_means,COND(5).LAGS.Conf_SEMs);
@@ -634,7 +634,7 @@ title('Experiment 3a: Probe Confidence');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(6).LAGS.OBJPER);
+SEM_subj = nanstd(COND(6).LAGS.OBJPER)/sqrt(size(COND(6).LAGS.OBJPER,2));
 barwitherr(SEM_subj,COND(6).LAGS.OP_means);
 hold on
 eb = errorbar(COND(6).LAGS.OP_means,COND(6).LAGS.OP_SEMs);
@@ -662,7 +662,7 @@ title('Experiment 3b: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(6).LAGS.META);
+SEM_subj = nanstd(COND(6).LAGS.META)/sqrt(size(COND(6).LAGS.META,2));
 barwitherr(SEM_subj,COND(6).LAGS.Meta_means);
 hold on
 eb = errorbar(COND(6).LAGS.Meta_means,COND(6).LAGS.Meta_SEMs);
@@ -689,7 +689,7 @@ title('Experiment 3b: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(6).LAGS.CONFID);
+SEM_subj = nanstd(COND(6).LAGS.CONFID)/sqrt(size(COND(6).LAGS.CONFID,2));
 barwitherr(SEM_subj,COND(6).LAGS.Conf_means);
 hold on
 eb = errorbar(COND(6).LAGS.Conf_means,COND(6).LAGS.Conf_SEMs);
@@ -721,7 +721,8 @@ MEAN_subj = zeros(6,4);
 SEM_subj = zeros(6,4);
 for condition = 1:6
     MEAN_subj(condition,:) = nanmean(COND(condition).LAGS.OBJPER);
-    SEM_subj(condition,:) = nanstd(COND(condition).LAGS.OBJPER);
+    SEM_subj(condition,:) = nanstd(COND(condition).LAGS.OBJPER)...
+        /sqrt(size(COND(condition).LAGS.OBJPER,2)); % SEM
 end
 xvalues = [.75:.1:1.25;1.75:.1:2.25;2.75:.1:3.25;3.75:.1:4.25];
 errorbar(xvalues,MEAN_subj',SEM_subj','o');
