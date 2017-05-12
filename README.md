@@ -5,6 +5,7 @@
 1. Nao Tsuchiya (Monash University)
 2. Julian Matthews (Monash University)
 3. Katsunori Miyahara (Rikkyo University)
+4. Elizaveta Solomonova (University of Montreal)
 
 ## Outline
 The aim of this hands-on project is to introduce two exemplar visual psychophysics paradigms. By experiencing what psychophysics tasks are like, students will be able to design their own experiment. Also, students will learn some basic analysis concepts: objective performance and [metacognitive sensitivity](http://www.sciencedirect.com/science/article/pii/S105381000090494X), each based on [signal detection theory](http://psycnet.apa.org/psycinfo/2004-19022-000). A broader aim is to consider what these behavioural techniques might tell us about consciousness and related processes (such as attention, memory and metacognition). 
