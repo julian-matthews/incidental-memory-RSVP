@@ -2,8 +2,8 @@
 % Creates summary of data for Behavioural RSVP Manuscript
  
 % Run the following to conduct analysis:
-% low_level_analysis
-% simple_analysis
+% low_level_analysis % Or load RSVP-repeated-subj-data.mat
+simple_analysis
 
 %% EXPERIMENT 1a: WITHIN-SCENE, UPRIGHT, INCIDENTAL MEMORY 
 % Twelve subjects took part in our replication of Kaunitz et al. (2016).
@@ -42,7 +42,7 @@ title('Experiment 1a: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(1).LAGS.OBJPER)/sqrt(size(COND(1).LAGS.OBJPER,2)); % SEM
+SEM_subj = nanstd(COND(1).LAGS.OBJPER)/sqrt(size(COND(1).LAGS.OBJPER,1)); % SEM
 barwitherr(SEM_subj,COND(1).LAGS.OP_means);
 hold on
 eb = errorbar(COND(1).LAGS.OP_means,COND(1).LAGS.OP_SEMs);
