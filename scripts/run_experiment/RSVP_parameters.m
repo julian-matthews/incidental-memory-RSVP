@@ -34,15 +34,32 @@ Exp.End_Sesh = 'End of Session';
 Exp.addParams.textSize = 20;
 
 % Window size (blank is full screen)
-Exp.Cfg.WinSize = [];
-% Exp.Cfg.WinSize = [10 10 850 750];
+% Exp.Cfg.WinSize = [];
+Exp.Cfg.WinSize = [10 10 850 750];
 
 %% INITIALISE SCREEN
+% Screen setup using Psychtoolbox is notoriously clunky in Windows,
+% particularly for dual-monitors.
 
-% Select screen
+% This relates to the way Windows handles multiple screens (it defines a
+% 'primary display' independent of traditional numbering) and numbers
+% screens in the reverse order to Linux/Mac. 
+
+% The 'isunix' function should account for the reverse numbering but if
+% you're using a second monitor you will need to define a 'primary display'
+% using the Display app in your Windows Control Panel. See the psychtoolbox
+% system reqs for more info: http://psychtoolbox.org/requirements/#windows
+
+% Select screen:
 Exp.Cfg.screens = Screen('Screens');
-Exp.Cfg.screenNumber = min(Exp.Cfg.screens); % Main screen
-% Exp.Cfg.screenNumber = max(Exp.Cfg.screens); % Laptop
+
+if isunix
+    Exp.Cfg.screenNumber = min(Exp.Cfg.screens); % Attached monitor
+    % Exp.Cfg.screenNumber = max(Exp.Cfg.screens); % Main display
+else
+    Exp.Cfg.screenNumber = max(Exp.Cfg.screens); % Attached monitor
+    % Exp.Cfg.screenNumber = min(Exp.Cfg.screens); % Main display
+end
 
 % Define colours
 Exp.Cfg.Color.white = WhiteIndex(Exp.Cfg.screenNumber);
