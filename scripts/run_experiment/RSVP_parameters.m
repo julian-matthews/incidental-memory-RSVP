@@ -54,11 +54,11 @@ Exp.Cfg.WinSize = [10 10 850 750];
 Exp.Cfg.screens = Screen('Screens');
 
 if isunix
-    Exp.Cfg.screenNumber = min(Exp.Cfg.screens); % Attached monitor
-    % Exp.Cfg.screenNumber = max(Exp.Cfg.screens); % Main display
+    % Exp.Cfg.screenNumber = min(Exp.Cfg.screens); % Attached monitor
+    Exp.Cfg.screenNumber = max(Exp.Cfg.screens); % Main display
 else
-    Exp.Cfg.screenNumber = max(Exp.Cfg.screens); % Attached monitor
-    % Exp.Cfg.screenNumber = min(Exp.Cfg.screens); % Main display
+    % Exp.Cfg.screenNumber = max(Exp.Cfg.screens); % Attached monitor
+    Exp.Cfg.screenNumber = min(Exp.Cfg.screens); % Main display
 end
 
 % Define colours
