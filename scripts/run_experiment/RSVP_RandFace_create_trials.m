@@ -28,15 +28,6 @@ Exp.Setup.runs = 4;
 % Divisible by 4 & 8 for even distribution of targ/probe positions
 Exp.Trials = 40;
 
-% Define number of crowd images to draw from (fixed to 160 in test_face_num)
-image_num = 160;
-
-% Define number of faces presented from these crowd scenes
-% Max varies per image but all have at least 17 faces present
-% Currently set to image with greatest number of faces (img #155, 50 faces)
-% This ensures an even distribution of faces from all parts of the crowd
-face_num = 46;
-
 % Specify mask type:
 % If mask_type = 1, mask will be white/black (0 || 255)
 % If mask_type = 2, mask will range across white/black (0 : 255)
@@ -63,7 +54,7 @@ for crowd = 1: length(scene)
         
         fac_count = fac_count + 1;
         
-        all_faces(fac_count).face_dat = scene(crowd).caras(face).face_dat;
+        all_faces(fac_count).face_dat = scene(crowd).caras(face).face_dat; %#ok<*AGROW>
         all_faces(fac_count).coords = scene(crowd).caras(face).coords;
         
     end
@@ -88,7 +79,7 @@ struc_count = 0;
 for sesh_num = 1:Exp.Setup.sessions
     for run_num = 1:Exp.Setup.runs
         for tr = 1:Exp.Trials
-                
+            
             targ_flag = 1;
             
             while targ_flag
@@ -148,14 +139,14 @@ for sesh_num = 1:Exp.Setup.sessions
                 fac_count = fac_count + 1;
                 
             end
-                
+            
         end
         
         % Assign all trial data to this run
         Runs(run_num).TR = TR;
-            
-    end
         
+    end
+    
     % Assign run to session
     Sessions(sesh_num).Runs = Runs;
     
@@ -213,9 +204,6 @@ for sesh_num = 1:Exp.Setup.sessions
         
         for tr = 1:Exp.Trials
             
-            % Grab trials from this run
-            run_trials = (tr+(Exp.Trials*(run_num-1)));
-            
             % Randomised probe lag for this trial (counterbalanced)
             TR(tr).probe_lag = probe_pos(tr);
             
@@ -234,8 +222,8 @@ for sesh_num = 1:Exp.Setup.sessions
                 imgDat_mask = randi(255,101,101);
                 TR(tr).imgDat_mask = imgDat_mask;
             end
-                        
-            % Save target image 
+            
+            % Save target image
             TR(tr).imgDat_target = Sessions(sesh_num).Runs(run_num).TR(tr).imgDat_target;
             
             TR(tr).imgDat_distractor = Sessions(sesh_num).Runs(run_num).TR(tr).imgDat_distractor;
@@ -263,9 +251,8 @@ for sesh_num = 1:Exp.Setup.sessions
                 fac_count = fac_count + 1;
                 
                 trial_lag = (TR(tr).target_lag + 1) + lag;
-                ballast_lag = (TR(tr).target_lag - 1) + lag;
                 
-                TR(tr).trial_vector{trial_lag} = trial_faces(fac_count).face_dat; 
+                TR(tr).trial_vector{trial_lag} = trial_faces(fac_count).face_dat;
                 
             end
             
@@ -288,7 +275,7 @@ Details.RNG_seed = Exp.RNG_seed;
 Details.subNum = Exp.Gral.subNum;
 Details.sessions = Exp.Setup.sessions;
 Details.runs_per_session = Exp.Setup.runs;
-Details.trials_per_run = Exp.Trials;
+Details.trials_per_run = Exp.Trials; %#ok<*STRNU>
 
 if ~exist([Exp.trial_prepro_dir Exp.Gral.subNum],'dir');
     mkdir('../../stimuli_trimmed/RandFace_preprocessed_trials/', Exp.Gral.subNum);
@@ -303,7 +290,7 @@ for teh_session = 1:Exp.Setup.sessions
     for teh_run = 1:Exp.Setup.runs
         
         run_string = mat2str(teh_run);
-        TR = Session(teh_session).Run(teh_run).TR;
+        TR = Session(teh_session).Run(teh_run).TR; %#ok<*NASGU>
         
         path = [Exp.trial_prepro_dir Exp.Gral.subNum '/' ...
             Exp.Gral.subNum '_s' sesh_string '_r' run_string];

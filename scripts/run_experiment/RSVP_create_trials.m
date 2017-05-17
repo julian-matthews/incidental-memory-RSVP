@@ -31,12 +31,6 @@ Exp.Trials = 40;
 % Define number of crowd images to draw from (fixed to 160 in test_face_num)
 image_num = 160;
 
-% Define number of faces presented from these crowd scenes
-% Max varies per image but all have at least 17 faces present
-% Currently set to image with greatest number of faces (img #155, 50 faces)
-% This ensures an even distribution of faces from all parts of the crowd
-face_num = 46;
-
 % Specify mask type:
 % If mask_type = 1, mask will be white/black (0 || 255)
 % If mask_type = 2, mask will range across white/black (0 : 255)
@@ -58,7 +52,7 @@ disp('Splines reticulated, constructing trials:')
 sec_check = 0;
 
 % For each scene, select out a second target, 2 probes and 2 distractors
-for crowd = 1:length(scene)
+for crowd = 1:length(scene) %#ok<NODEF>
     
     % While loop with sec_flag to ensure all targets/probes/distractors are
     % [101x101] in dimension
@@ -75,7 +69,7 @@ for crowd = 1:length(scene)
         scene_perm = randperm(scene(crowd).N_caras);
         
         % Select out second target
-        scene(crowd).target_one = scene(crowd).caras(scene_perm(1));
+        scene(crowd).target_one = scene(crowd).caras(scene_perm(1)); %#ok<*AGROW>
         
         if size(scene(crowd).target_one.face_dat,1) ~= 101 || size(scene(crowd).target_one.face_dat,2) ~= 101
             sec_flag = 0;
@@ -344,7 +338,7 @@ Details.RNG_seed = Exp.RNG_seed;
 Details.subNum = Exp.Gral.subNum;
 Details.sessions = Exp.Setup.sessions;
 Details.runs_per_session = Exp.Setup.runs;
-Details.trials_per_run = Exp.Trials;
+Details.trials_per_run = Exp.Trials; %#ok<*STRNU>
 
 if ~exist([Exp.trial_prepro_dir Exp.Gral.subNum],'dir');
     mkdir('../../stimuli_trimmed/preprocessed_trials/', Exp.Gral.subNum);
@@ -359,7 +353,7 @@ for teh_session = 1:Exp.Setup.sessions
     for teh_run = 1:Exp.Setup.runs
         
         run_string = mat2str(teh_run);
-        TR = Session(teh_session).Run(teh_run).TR;
+        TR = Session(teh_session).Run(teh_run).TR; %#ok<*NASGU>
         
         path = [Exp.trial_prepro_dir Exp.Gral.subNum '/' ...
             Exp.Gral.subNum '_s' sesh_string '_r' run_string];

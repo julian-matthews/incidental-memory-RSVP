@@ -122,7 +122,7 @@ if graceful_finish == 0
     
     % Prepare vector of lags in each trial to store presentation time of stimuli
     for trial = 1:Exp.Trials
-        TR(trial).lag_times = nan((length(TR(trial).trial_vector)),1);
+        TR(trial).lag_times = nan((length(TR(trial).trial_vector)),1); %#ok<*AGROW>
     end
     
     Screen('FillRect', Exp.Cfg.win, Exp.Cfg.Color.gray);
@@ -133,8 +133,10 @@ if graceful_finish == 0
     %% TARGET IMAGE FOR 3 SECONDS
     
     if add_jitter
+        % Placeholder in case future version jitters timing
+        
         % Save timing defaults for jitter
-        default_target_time = target_time;
+        default_target_time = target_time; %#ok<*UNRCH>
         default_flip_time = flip_time;
         default_blank_time = blank_time;
     end
@@ -161,6 +163,8 @@ if graceful_finish == 0
         end
         
         if add_jitter
+            % Placeholder in case future version jitters timing
+            
             % Add or subtract 5% of default target time for presentation
             targ_jitter = default_target_time*(0.1*(rand(1)-.5));
             target_time = default_target_time + targ_jitter;
