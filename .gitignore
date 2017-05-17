@@ -65,3 +65,4 @@ Thumbs.db
 #Folders to keep local:
 data/
 stimuli_trimmed/
+scripts/analysis/html/
