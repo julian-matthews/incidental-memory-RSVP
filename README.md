@@ -5,6 +5,7 @@
 1. Nao Tsuchiya (Monash University)
 2. Julian Matthews (Monash University)
 3. Katsunori Miyahara (Rikkyo University)
+4. Elizaveta Solomonova (University of Montreal)
 
 ## Outline
 The aim of this hands-on project is to introduce two exemplar visual psychophysics paradigms. By experiencing what psychophysics tasks are like, students will be able to design their own experiment. Also, students will learn some basic analysis concepts: objective performance and [metacognitive sensitivity](http://www.sciencedirect.com/science/article/pii/S105381000090494X), each based on [signal detection theory](http://psycnet.apa.org/psycinfo/2004-19022-000). A broader aim is to consider what these behavioural techniques might tell us about consciousness and related processes (such as attention, memory and metacognition). 
@@ -18,7 +19,7 @@ Here we provide MATLAB code for building psychophysics experiments that employ *
 ## Description:
 The experiment included in this repository employs RSVP to further explore our recent work on [incidental memory in visual search](https://www.ncbi.nlm.nih.gov/pubmed/27507869). Clone or download the repository to examine how it works. 
 
-The critical m-files for running the experiment are in the [`scripts`](./scripts/) subfolder.
+The critical m-files for running the experiment are in the [`scripts`](./scripts/run_experiment) subfolder.
 
 ![alt_text][avatar]
 
