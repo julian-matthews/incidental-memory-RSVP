@@ -61,3 +61,7 @@ octave-workspace
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+#Folders to keep local:
+data/
+stimuli_trimmed/
