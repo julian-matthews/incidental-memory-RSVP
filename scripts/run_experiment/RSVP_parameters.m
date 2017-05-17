@@ -97,7 +97,6 @@ Screen('TextSize', Exp.Cfg.win, Exp.addParams.textSize);
 Exp.Cfg.frameThickness = 20;
 
 Exp.Cfg.rs = 250; %300;% 216;
-Exp.Cfg.rs = 250; % 300;%150;
 
 Exp.Cfg.rect = [0 0 Exp.Cfg.rs Exp.Cfg.rs];
 Exp.Cfg.smallrect = [0 0 Exp.Cfg.rs/1.5 Exp.Cfg.rs/4];
