@@ -703,14 +703,36 @@ hold on
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 1])
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .9])
 xlim([0.25 4.75])
 legend('1a: TWU','1b: TWI','2a: TAU','2b: TAI','3a: NAU','3b: NAI')
 legend BOXOFF
 ylabel('Type-I AUC');
 xlabel('Lag Position');
 title('Objective Performance comparison across lags');
+
+figure;
+MEAN_subj = zeros(6,4);
+SEM_subj = zeros(6,4);
+for condition = 1:6
+    MEAN_subj(condition,:) = COND(condition).LAGS.Meta_means;
+    SEM_subj(condition,:) = COND(condition).LAGS.Meta_SEMs;
+end
+xvalues = [.75:.1:1.25;1.75:.1:2.25;2.75:.1:3.25;3.75:.1:4.25];
+errorbar(xvalues,MEAN_subj',SEM_subj','o');
+hold on
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .75])
+xlim([0.25 4.75])
+legend('1a: TWU','1b: TWI','2a: TAU','2b: TAI','3a: NAU','3b: NAI')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Metacognition comparison across lags');
 
 %%
 % NB. Subjects (n=12) shared between:
@@ -855,7 +877,7 @@ ylabel('Type-II AUC');
 xlabel('Lag Position');
 title('Inverted Face Memory Comparison: Metacognition');
 
-%% REPORTABLE STATISTICS
+% REPORTABLE STATISTICS
 % Here's a summary of values that might be reported in the manuscript and
 % some basic significance testing.
 
