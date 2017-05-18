@@ -14,6 +14,10 @@ function removeErrorBarEnds(hErrBar,horizontal)
 
 % david szotten
 
+if nargin == 1
+    horizontal = 0;
+end
+
 if horizontal == 0
 
 %use length of xdata to find the right handle
