@@ -41,8 +41,9 @@ title('Experiment 1a: Target Accuracy');
 
 %% Probe Objective Performance at each Lag Position
 
+% Implement within_subject_error.m
 figure;
-SEM_subj = nanstd(COND(1).LAGS.OBJPER)/sqrt(size(COND(1).LAGS.OBJPER,1)); % SEM
+% SEM_subj = nanstd(COND(1).LAGS.OBJPER)/sqrt(size(COND(1).LAGS.OBJPER,1)); % SEM
 barwitherr(SEM_subj,COND(1).LAGS.OP_means);
 hold on
 eb = errorbar(COND(1).LAGS.OP_means,COND(1).LAGS.OP_SEMs);
