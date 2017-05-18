@@ -694,9 +694,8 @@ figure;
 MEAN_subj = zeros(6,4);
 SEM_subj = zeros(6,4);
 for condition = 1:6
-    MEAN_subj(condition,:) = nanmean(COND(condition).LAGS.OBJPER);
-    SEM_subj(condition,:) = nanstd(COND(condition).LAGS.OBJPER)...
-        /sqrt(size(COND(condition).LAGS.OBJPER,2)); % SEM
+    MEAN_subj(condition,:) = COND(condition).LAGS.OP_means;
+    SEM_subj(condition,:) = COND(condition).LAGS.OP_SEMs;
 end
 xvalues = [.75:.1:1.25;1.75:.1:2.25;2.75:.1:3.25;3.75:.1:4.25];
 errorbar(xvalues,MEAN_subj',SEM_subj','o');
@@ -720,6 +719,141 @@ title('Objective Performance comparison across lags');
 % * Experiments 1a & 1b
 % * Experiments 2a & 3a
 % * Experiments 2b & 3b
+
+%% WITHIN-SCENE COMPARISON: UPRIGHT vs. INVERTED FACES
+% 
+
+figure;
+vu = plot((1:4)-.05,COND(1).LAGS.OP_means,'ro:');
+hold on
+vi = plot((1:4)+.05,COND(2).LAGS.OP_means,'bo:');
+eu = errorbar((1:4)-.05,COND(1).LAGS.OP_means,COND(1).LAGS.OP_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(2).LAGS.OP_means,COND(2).LAGS.OP_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','r');
+set(ei,'LineStyle','none','LineWidth',3,'Color','b');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .9])
+xlim([0.25 4.75])
+legend('Upright','Inverted')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Within-Scene Comparison: Objective Performance');
+
+figure;
+vu = plot((1:4)-.05,COND(1).LAGS.Meta_means,'ro:');
+hold on
+vi = plot((1:4)+.05,COND(2).LAGS.Meta_means,'bo:');
+eu = errorbar((1:4)-.05,COND(1).LAGS.Meta_means,COND(1).LAGS.Meta_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(2).LAGS.Meta_means,COND(2).LAGS.Meta_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','r');
+set(ei,'LineStyle','none','LineWidth',3,'Color','b');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .75])
+xlim([0.25 4.75])
+legend('Upright','Inverted')
+legend BOXOFF
+ylabel('Type-II AUC');
+xlabel('Lag Position');
+title('Within-Scene Comparison: Metacognition');
+
+%% UPRIGHT ACROSS-SCENE FACES: INCIDENTAL vs. EXPLICIT MEMORY
+% 
+
+figure;
+vu = plot((1:4)-.05,COND(3).LAGS.OP_means,'mo:');
+hold on
+vi = plot((1:4)+.05,COND(5).LAGS.OP_means,'go:');
+eu = errorbar((1:4)-.05,COND(3).LAGS.OP_means,COND(3).LAGS.OP_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(5).LAGS.OP_means,COND(5).LAGS.OP_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','m');
+set(ei,'LineStyle','none','LineWidth',3,'Color','g');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .9])
+xlim([0.25 4.75])
+legend('Incidental Memory','Explicit Memory')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Upright Face Memory Comparison: Objective Performance');
+
+figure;
+vu = plot((1:4)-.05,COND(3).LAGS.Meta_means,'mo:');
+hold on
+vi = plot((1:4)+.05,COND(5).LAGS.Meta_means,'go:');
+eu = errorbar((1:4)-.05,COND(3).LAGS.Meta_means,COND(3).LAGS.Meta_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(5).LAGS.Meta_means,COND(5).LAGS.Meta_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','m');
+set(ei,'LineStyle','none','LineWidth',3,'Color','g');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .75])
+xlim([0.25 4.75])
+legend('Incidental Memory','Explicit Memory')
+legend BOXOFF
+ylabel('Type-II AUC');
+xlabel('Lag Position');
+title('Upright Face Memory Comparison: Metacognition');
+
+%% INVERTED ACROSS-SCENE FACES: INCIDENTAL vs. EXPLICIT MEMORY
+% 
+
+figure;
+vu = plot((1:4)-.05,COND(4).LAGS.OP_means,'co:');
+hold on
+vi = plot((1:4)+.05,COND(6).LAGS.OP_means,'yo:');
+eu = errorbar((1:4)-.05,COND(4).LAGS.OP_means,COND(4).LAGS.OP_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(6).LAGS.OP_means,COND(6).LAGS.OP_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','c');
+set(ei,'LineStyle','none','LineWidth',3,'Color','y');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .9])
+xlim([0.25 4.75])
+legend('Incidental Memory','Explicit Memory')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Inverted Face Memory Comparison: Objective Performance');
+
+figure;
+vu = plot((1:4)-.05,COND(4).LAGS.Meta_means,'co:');
+hold on
+vi = plot((1:4)+.05,COND(6).LAGS.Meta_means,'yo:');
+eu = errorbar((1:4)-.05,COND(4).LAGS.Meta_means,COND(4).LAGS.Meta_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(6).LAGS.Meta_means,COND(6).LAGS.Meta_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','c');
+set(ei,'LineStyle','none','LineWidth',3,'Color','y');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .75])
+xlim([0.25 4.75])
+legend('Incidental Memory','Explicit Memory')
+legend BOXOFF
+ylabel('Type-II AUC');
+xlabel('Lag Position');
+title('Inverted Face Memory Comparison: Metacognition');
 
 %% REPORTABLE STATISTICS
 % Here's a summary of values that might be reported in the manuscript and
