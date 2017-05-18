@@ -119,7 +119,7 @@ if graceful_finish == 0
     
     % Prepare vector of lags in each trial to store presentation time of stimuli
     for trial = 1:Exp.Trials
-        TR(trial).lag_times = nan((length(TR(trial).trial_vector)),1);
+        TR(trial).lag_times = nan((length(TR(trial).trial_vector)),1); %#ok<*AGROW>
     end
     
     Screen('FillRect', Exp.Cfg.win, Exp.Cfg.Color.gray);
@@ -218,8 +218,12 @@ if graceful_finish == 0
                 tic;
                 
                 if add_jitter
+                    % This wasn't used in our experiment but I've included
+                    % the code in case a future manipulation jitters
+                    % presentation
+                    
                     % Add or subtract 5% of default times for presentation
-                    flip_jitter = default_flip_time*(0.1*(rand(1)-.5));
+                    flip_jitter = default_flip_time*(0.1*(rand(1)-.5)); %#ok<*UNRCH>
                     flip_time = default_flip_time + flip_jitter;
                     
                     blank_jitter = default_blank_time*(0.1*(rand(1)-.5));

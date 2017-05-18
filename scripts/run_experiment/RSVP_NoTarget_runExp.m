@@ -10,10 +10,10 @@ Gral.subjID = input('Enter subject initials:\n','s'); % 'JM'
 Gral.seshID = input('Session number, 1 or 2:\n','s'); % '1'
 Gral.runID = input('Run number, 1-4:\n','s'); % '4'
 
-% Gral.invert = input('Invert faces, y/n:\n','s'); % Only 'y' or 'Y' will invert
+Gral.invert = input('Invert faces, y/n:\n','s'); % Only 'y' or 'Y' will invert
 
 % Overwrite gral.invert value (never invert)
-Gral.invert = 'n';
+% Gral.invert = 'n';
 
 if strcmp(Gral.invert,'y') || strcmp(Gral.invert,'Y')
     invert = 1;
@@ -127,7 +127,7 @@ if graceful_finish == 0
     
     % Prepare vector of lags in each trial to store presentation time of stimuli
     for trial = 1:Exp.Trials
-        TR(trial).lag_times = nan((length(TR(trial).trial_vector)),1);
+        TR(trial).lag_times = nan((length(TR(trial).trial_vector)),1); %#ok<*AGROW>
     end
     
     Screen('FillRect', Exp.Cfg.win, Exp.Cfg.Color.gray);
