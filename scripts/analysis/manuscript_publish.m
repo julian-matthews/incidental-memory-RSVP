@@ -3,7 +3,7 @@
  
 % Run the following to conduct analysis:
 % low_level_analysis % Or load RSVP-repeated-subj-data.mat
-simple_analysis
+simple_analysis % Computes within-subject error using O'Brien & Cousinea (2014)
 
 %% EXPERIMENT 1a: WITHIN-SCENE, UPRIGHT, INCIDENTAL MEMORY 
 % Twelve subjects took part in our replication of Kaunitz et al. (2016).
@@ -42,27 +42,26 @@ title('Experiment 1a: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(1).LAGS.OBJPER)/sqrt(size(COND(1).LAGS.OBJPER,1)); % SEM
-barwitherr(SEM_subj,COND(1).LAGS.OP_means);
+eb = errorbar(COND(1).LAGS.OP_means,COND(1).LAGS.OP_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(1).LAGS.OP_means,COND(1).LAGS.OP_SEMs);
+v = plot(COND(1).LAGS.OP_means,'ko:'); 
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .9])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .9])
+xlim([0.5 4.5])
 ylabel('Type-I AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 1a: Probe Objective Performance');
 
 %%
 % Objective Performance (Type-I AUC) for probe detection at each lag 
-% position in Experiment 1a. Black error bars reflect standard error of 
-% the mean between subjects. Error is considerably lower between blocks,
-% these values are superimposed in red (averaged between subjects).
+% position in Experiment 1a. Error bars represent the within-subjects
+% standard error of the mean (derived from O'Brien & Cousineau, 2014).
+% Multiply by 1.96 for approximate 95% CIs
 %
 % Probes are detected above chance at each lag position. It also appears
 % that performance might be significantly greater at lag -1. This seems to
@@ -73,18 +72,17 @@ title('Experiment 1a: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(1).LAGS.META)/sqrt(size(COND(1).LAGS.META,2)); % SEM
-barwitherr(SEM_subj,COND(1).LAGS.Meta_means);
+eb = errorbar(COND(1).LAGS.Meta_means,COND(1).LAGS.Meta_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(1).LAGS.Meta_means,COND(1).LAGS.Meta_SEMs);
+v = plot(COND(1).LAGS.Meta_means,'ko:');
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .75])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .75])
+xlim([0.5 4.5])
 ylabel('Type-II AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 1a: Probe Metacognition');
@@ -93,9 +91,8 @@ title('Experiment 1a: Probe Metacognition');
 % NB. Change in axis dimensions to best capture results!
 %
 % Metacognition (Type-II AUC) for probe detection at each lag position in
-% Experiment 1a. As above, black error bars reflect standard error of the 
-% mean between subjects. Error is considerably lower between blocks, these 
-% values are superimposed in red (averaged between subjects).
+% Experiment 1a. As above, error bars reflect within-subject error derived
+% from O'Brien & Cousineau (2014).
 %
 % Metacognition appears to be above chance at each lag position and are
 % unlikely to differ significantly between lag positions. We see a slight
@@ -108,17 +105,15 @@ title('Experiment 1a: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(1).LAGS.CONFID)/sqrt(size(COND(1).LAGS.CONFID,2)); % SEM
-barwitherr(SEM_subj,COND(1).LAGS.Conf_means);
+eb = errorbar(COND(1).LAGS.Conf_means,COND(1).LAGS.Conf_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(1).LAGS.Conf_means,COND(1).LAGS.Conf_SEMs);
+v = plot(COND(1).LAGS.Conf_means,'ko:'); 
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-set(gca,'YTick',1:4);
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
 ylim([0.75 4.25])
-xlim([0 5])
+xlim([0.5 4.5])
 ylabel('Confidence Level');
 xlabel('Lag Position relative to Target');
 title('Experiment 1a: Probe Confidence');
@@ -179,27 +174,25 @@ title('Experiment 1b: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(2).LAGS.OBJPER)/sqrt(size(COND(2).LAGS.OBJPER,2)); % SEM
-barwitherr(SEM_subj,COND(2).LAGS.OP_means);
+eb = errorbar(COND(2).LAGS.OP_means,COND(2).LAGS.OP_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(2).LAGS.OP_means,COND(2).LAGS.OP_SEMs);
+v = plot(COND(2).LAGS.OP_means,'ko:'); 
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .9])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .9])
+xlim([0.5 4.5])
 ylabel('Type-I AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 1b: Probe Objective Performance');
 
 %%
 % Objective Performance (Type-I AUC) for probe detection at each lag 
-% position in Experiment 1b. Black error bars reflect standard error of 
-% the mean between subjects. Error is considerably lower between blocks,
-% these values are superimposed in red (averaged between subjects).
+% position in Experiment 1b. Error bars reflect within-subject SEM (O'Brien
+% & Cousineau, 2014)
 %
 % It still appears that probes are detected above chance at each lag
 % position though performance is moderated compared to the upright version.
@@ -211,18 +204,17 @@ title('Experiment 1b: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(2).LAGS.META)/sqrt(size(COND(2).LAGS.META,2));
-barwitherr(SEM_subj,COND(2).LAGS.Meta_means);
+eb = errorbar(COND(2).LAGS.Meta_means,COND(2).LAGS.Meta_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(2).LAGS.Meta_means,COND(2).LAGS.Meta_SEMs);
+v = plot(COND(2).LAGS.Meta_means,'ko:');
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .75])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .75])
+xlim([0.5 4.5])
 ylabel('Type-II AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 1b: Probe Metacognition');
@@ -244,17 +236,15 @@ title('Experiment 1b: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(2).LAGS.CONFID)/sqrt(size(COND(2).LAGS.CONFID,2));
-barwitherr(SEM_subj,COND(2).LAGS.Conf_means);
+eb = errorbar(COND(2).LAGS.Conf_means,COND(2).LAGS.Conf_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(2).LAGS.Conf_means,COND(2).LAGS.Conf_SEMs);
+v = plot(COND(2).LAGS.Conf_means,'ko:'); 
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-set(gca,'YTick',1:4);
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
 ylim([0.75 4.25])
-xlim([0 5])
+xlim([0.5 4.5])
 ylabel('Confidence Level');
 xlabel('Lag Position relative to Target');
 title('Experiment 1b: Probe Confidence');
@@ -312,18 +302,17 @@ title('Experiment 2a: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(3).LAGS.OBJPER)/sqrt(size(COND(3).LAGS.OBJPER,2));
-barwitherr(SEM_subj,COND(3).LAGS.OP_means);
+eb = errorbar(COND(3).LAGS.OP_means,COND(3).LAGS.OP_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(3).LAGS.OP_means,COND(3).LAGS.OP_SEMs);
+v = plot(COND(3).LAGS.OP_means,'ko:'); 
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .9])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .9])
+xlim([0.5 4.5])
 ylabel('Type-I AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 2a: Probe Objective Performance');
@@ -346,18 +335,17 @@ title('Experiment 2a: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(3).LAGS.META)/sqrt(size(COND(3).LAGS.META,2));
-barwitherr(SEM_subj,COND(3).LAGS.Meta_means);
+eb = errorbar(COND(3).LAGS.Meta_means,COND(3).LAGS.Meta_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(3).LAGS.Meta_means,COND(3).LAGS.Meta_SEMs);
+v = plot(COND(3).LAGS.Meta_means,'ko:');
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .75])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .75])
+xlim([0.5 4.5])
 ylabel('Type-II AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 2a: Probe Metacognition');
@@ -374,17 +362,15 @@ title('Experiment 2a: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(3).LAGS.CONFID)/sqrt(size(COND(3).LAGS.CONFID,2));
-barwitherr(SEM_subj,COND(3).LAGS.Conf_means);
+eb = errorbar(COND(3).LAGS.Conf_means,COND(3).LAGS.Conf_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(3).LAGS.Conf_means,COND(3).LAGS.Conf_SEMs);
+v = plot(COND(3).LAGS.Conf_means,'ko:'); 
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-set(gca,'YTick',1:4);
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
 ylim([0.75 4.25])
-xlim([0 5])
+xlim([0.5 4.5])
 ylabel('Confidence Level');
 xlabel('Lag Position relative to Target');
 title('Experiment 2a: Probe Confidence');
@@ -443,18 +429,17 @@ title('Experiment 2b: Target Accuracy');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(4).LAGS.OBJPER)/sqrt(size(COND(4).LAGS.OBJPER,2));
-barwitherr(SEM_subj,COND(4).LAGS.OP_means);
+eb = errorbar(COND(4).LAGS.OP_means,COND(4).LAGS.OP_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(4).LAGS.OP_means,COND(4).LAGS.OP_SEMs);
+v = plot(COND(4).LAGS.OP_means,'ko:'); 
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .9])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .9])
+xlim([0.5 4.5])
 ylabel('Type-I AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 2b: Probe Objective Performance');
@@ -477,18 +462,17 @@ title('Experiment 2b: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(4).LAGS.META)/sqrt(size(COND(4).LAGS.META,2));
-barwitherr(SEM_subj,COND(4).LAGS.Meta_means);
+eb = errorbar(COND(4).LAGS.Meta_means,COND(4).LAGS.Meta_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(4).LAGS.Meta_means,COND(4).LAGS.Meta_SEMs);
+v = plot(COND(4).LAGS.Meta_means,'ko:');
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .75])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .75])
+xlim([0.5 4.5])
 ylabel('Type-II AUC');
 xlabel('Lag Position relative to Target');
 title('Experiment 2b: Probe Metacognition');
@@ -505,17 +489,15 @@ title('Experiment 2b: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(4).LAGS.CONFID)/sqrt(size(COND(4).LAGS.CONFID,2));
-barwitherr(SEM_subj,COND(4).LAGS.Conf_means);
+eb = errorbar(COND(4).LAGS.Conf_means,COND(4).LAGS.Conf_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(4).LAGS.Conf_means,COND(4).LAGS.Conf_SEMs);
+v = plot(COND(4).LAGS.Conf_means,'ko:'); 
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-set(gca,'YTick',1:4);
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
 ylim([0.75 4.25])
-xlim([0 5])
+xlim([0.5 4.5])
 ylabel('Confidence Level');
 xlabel('Lag Position relative to Target');
 title('Experiment 2b: Probe Confidence');
@@ -541,18 +523,17 @@ title('Experiment 2b: Probe Confidence');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(5).LAGS.OBJPER)/sqrt(size(COND(5).LAGS.OBJPER,2));
-barwitherr(SEM_subj,COND(5).LAGS.OP_means);
+eb = errorbar(COND(5).LAGS.OP_means,COND(5).LAGS.OP_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(5).LAGS.OP_means,COND(5).LAGS.OP_SEMs);
+v = plot(COND(5).LAGS.OP_means,'ko:'); 
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .9])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .9])
+xlim([0.5 4.5])
 ylabel('Type-I AUC');
 xlabel('Lag Position relative to final face');
 title('Experiment 3a: Probe Objective Performance');
@@ -574,18 +555,17 @@ title('Experiment 3a: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(5).LAGS.META)/sqrt(size(COND(5).LAGS.META,2));
-barwitherr(SEM_subj,COND(5).LAGS.Meta_means);
+eb = errorbar(COND(5).LAGS.Meta_means,COND(5).LAGS.Meta_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(5).LAGS.Meta_means,COND(5).LAGS.Meta_SEMs);
+v = plot(COND(5).LAGS.Meta_means,'ko:');
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .75])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .75])
+xlim([0.5 4.5])
 ylabel('Type-II AUC');
 xlabel('Lag Position relative to final face');
 title('Experiment 3a: Probe Metacognition');
@@ -600,17 +580,15 @@ title('Experiment 3a: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(5).LAGS.CONFID)/sqrt(size(COND(5).LAGS.CONFID,2));
-barwitherr(SEM_subj,COND(5).LAGS.Conf_means);
+eb = errorbar(COND(5).LAGS.Conf_means,COND(5).LAGS.Conf_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(5).LAGS.Conf_means,COND(5).LAGS.Conf_SEMs);
+v = plot(COND(5).LAGS.Conf_means,'ko:'); 
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-set(gca,'YTick',1:4);
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
 ylim([0.75 4.25])
-xlim([0 5])
+xlim([0.5 4.5])
 ylabel('Confidence Level');
 xlabel('Lag Position relative to final face');
 title('Experiment 3a: Probe Confidence');
@@ -634,18 +612,17 @@ title('Experiment 3a: Probe Confidence');
 %% Probe Objective Performance at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(6).LAGS.OBJPER)/sqrt(size(COND(6).LAGS.OBJPER,2));
-barwitherr(SEM_subj,COND(6).LAGS.OP_means);
+eb = errorbar(COND(6).LAGS.OP_means,COND(6).LAGS.OP_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(6).LAGS.OP_means,COND(6).LAGS.OP_SEMs);
+v = plot(COND(6).LAGS.OP_means,'ko:'); 
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .9])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .9])
+xlim([0.5 4.5])
 ylabel('Type-I AUC');
 xlabel('Lag Position relative to final face');
 title('Experiment 3b: Probe Objective Performance');
@@ -662,18 +639,17 @@ title('Experiment 3b: Probe Objective Performance');
 %% Probe Metacognition at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(6).LAGS.META)/sqrt(size(COND(6).LAGS.META,2));
-barwitherr(SEM_subj,COND(6).LAGS.Meta_means);
+eb = errorbar(COND(6).LAGS.Meta_means,COND(6).LAGS.Meta_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(6).LAGS.Meta_means,COND(6).LAGS.Meta_SEMs);
+v = plot(COND(6).LAGS.Meta_means,'ko:');
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 .75])
-xlim([0 5])
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
+ylim([0.45 .75])
+xlim([0.5 4.5])
 ylabel('Type-II AUC');
 xlabel('Lag Position relative to final face');
 title('Experiment 3b: Probe Metacognition');
@@ -689,17 +665,15 @@ title('Experiment 3b: Probe Metacognition');
 %% Probe Confidence at each Lag Position
 
 figure;
-SEM_subj = nanstd(COND(6).LAGS.CONFID)/sqrt(size(COND(6).LAGS.CONFID,2));
-barwitherr(SEM_subj,COND(6).LAGS.Conf_means);
+eb = errorbar(COND(6).LAGS.Conf_means,COND(6).LAGS.Conf_SEMs); removeErrorBarEnds(eb);
 hold on
-eb = errorbar(COND(6).LAGS.Conf_means,COND(6).LAGS.Conf_SEMs);
+v = plot(COND(6).LAGS.Conf_means,'ko:'); 
 box off
-colormap('white');
+set(v,'LineWidth',2)
 set(eb, 'LineStyle','none','LineWidth',4,'Color','r')
-set(gca,'XTickLabel',{'-1','-3','-5','-7'});
-set(gca,'YTick',1:4);
+set(gca,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out','XTick',1:4);
 ylim([0.75 4.25])
-xlim([0 5])
+xlim([0.5 4.5])
 ylabel('Confidence Level');
 xlabel('Lag Position relative to final face');
 title('Experiment 3b: Probe Confidence');
@@ -720,9 +694,8 @@ figure;
 MEAN_subj = zeros(6,4);
 SEM_subj = zeros(6,4);
 for condition = 1:6
-    MEAN_subj(condition,:) = nanmean(COND(condition).LAGS.OBJPER);
-    SEM_subj(condition,:) = nanstd(COND(condition).LAGS.OBJPER)...
-        /sqrt(size(COND(condition).LAGS.OBJPER,2)); % SEM
+    MEAN_subj(condition,:) = COND(condition).LAGS.OP_means;
+    SEM_subj(condition,:) = COND(condition).LAGS.OP_SEMs;
 end
 xvalues = [.75:.1:1.25;1.75:.1:2.25;2.75:.1:3.25;3.75:.1:4.25];
 errorbar(xvalues,MEAN_subj',SEM_subj','o');
@@ -730,14 +703,36 @@ hold on
 h = line([0 5],[.5 .5]);
 set(h, 'LineStyle',':','Color','k')
 box off
-set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'});
-ylim([0.4 1])
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .9])
 xlim([0.25 4.75])
 legend('1a: TWU','1b: TWI','2a: TAU','2b: TAI','3a: NAU','3b: NAI')
 legend BOXOFF
 ylabel('Type-I AUC');
 xlabel('Lag Position');
 title('Objective Performance comparison across lags');
+
+figure;
+MEAN_subj = zeros(6,4);
+SEM_subj = zeros(6,4);
+for condition = 1:6
+    MEAN_subj(condition,:) = COND(condition).LAGS.Meta_means;
+    SEM_subj(condition,:) = COND(condition).LAGS.Meta_SEMs;
+end
+xvalues = [.75:.1:1.25;1.75:.1:2.25;2.75:.1:3.25;3.75:.1:4.25];
+errorbar(xvalues,MEAN_subj',SEM_subj','o');
+hold on
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .75])
+xlim([0.25 4.75])
+legend('1a: TWU','1b: TWI','2a: TAU','2b: TAI','3a: NAU','3b: NAI')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Metacognition comparison across lags');
 
 %%
 % NB. Subjects (n=12) shared between:
@@ -747,7 +742,142 @@ title('Objective Performance comparison across lags');
 % * Experiments 2a & 3a
 % * Experiments 2b & 3b
 
-%% REPORTABLE STATISTICS
+%% WITHIN-SCENE COMPARISON: UPRIGHT vs. INVERTED FACES
+% 
+
+figure;
+vu = plot((1:4)-.05,COND(1).LAGS.OP_means,'ro:');
+hold on
+vi = plot((1:4)+.05,COND(2).LAGS.OP_means,'bo:');
+eu = errorbar((1:4)-.05,COND(1).LAGS.OP_means,COND(1).LAGS.OP_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(2).LAGS.OP_means,COND(2).LAGS.OP_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','r');
+set(ei,'LineStyle','none','LineWidth',3,'Color','b');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .9])
+xlim([0.25 4.75])
+legend('Upright','Inverted')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Within-Scene Comparison: Objective Performance');
+
+figure;
+vu = plot((1:4)-.05,COND(1).LAGS.Meta_means,'ro:');
+hold on
+vi = plot((1:4)+.05,COND(2).LAGS.Meta_means,'bo:');
+eu = errorbar((1:4)-.05,COND(1).LAGS.Meta_means,COND(1).LAGS.Meta_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(2).LAGS.Meta_means,COND(2).LAGS.Meta_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','r');
+set(ei,'LineStyle','none','LineWidth',3,'Color','b');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .75])
+xlim([0.25 4.75])
+legend('Upright','Inverted')
+legend BOXOFF
+ylabel('Type-II AUC');
+xlabel('Lag Position');
+title('Within-Scene Comparison: Metacognition');
+
+%% UPRIGHT ACROSS-SCENE FACES: INCIDENTAL vs. EXPLICIT MEMORY
+% 
+
+figure;
+vu = plot((1:4)-.05,COND(3).LAGS.OP_means,'mo:');
+hold on
+vi = plot((1:4)+.05,COND(5).LAGS.OP_means,'go:');
+eu = errorbar((1:4)-.05,COND(3).LAGS.OP_means,COND(3).LAGS.OP_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(5).LAGS.OP_means,COND(5).LAGS.OP_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','m');
+set(ei,'LineStyle','none','LineWidth',3,'Color','g');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .9])
+xlim([0.25 4.75])
+legend('Incidental Memory','Explicit Memory')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Upright Face Memory Comparison: Objective Performance');
+
+figure;
+vu = plot((1:4)-.05,COND(3).LAGS.Meta_means,'mo:');
+hold on
+vi = plot((1:4)+.05,COND(5).LAGS.Meta_means,'go:');
+eu = errorbar((1:4)-.05,COND(3).LAGS.Meta_means,COND(3).LAGS.Meta_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(5).LAGS.Meta_means,COND(5).LAGS.Meta_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','m');
+set(ei,'LineStyle','none','LineWidth',3,'Color','g');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .75])
+xlim([0.25 4.75])
+legend('Incidental Memory','Explicit Memory')
+legend BOXOFF
+ylabel('Type-II AUC');
+xlabel('Lag Position');
+title('Upright Face Memory Comparison: Metacognition');
+
+%% INVERTED ACROSS-SCENE FACES: INCIDENTAL vs. EXPLICIT MEMORY
+% 
+
+figure;
+vu = plot((1:4)-.05,COND(4).LAGS.OP_means,'co:');
+hold on
+vi = plot((1:4)+.05,COND(6).LAGS.OP_means,'yo:');
+eu = errorbar((1:4)-.05,COND(4).LAGS.OP_means,COND(4).LAGS.OP_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(6).LAGS.OP_means,COND(6).LAGS.OP_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','c');
+set(ei,'LineStyle','none','LineWidth',3,'Color','y');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .9])
+xlim([0.25 4.75])
+legend('Incidental Memory','Explicit Memory')
+legend BOXOFF
+ylabel('Type-I AUC');
+xlabel('Lag Position');
+title('Inverted Face Memory Comparison: Objective Performance');
+
+figure;
+vu = plot((1:4)-.05,COND(4).LAGS.Meta_means,'co:');
+hold on
+vi = plot((1:4)+.05,COND(6).LAGS.Meta_means,'yo:');
+eu = errorbar((1:4)-.05,COND(4).LAGS.Meta_means,COND(4).LAGS.Meta_SEMs); removeErrorBarEnds(eu);
+ei = errorbar((1:4)+.05,COND(6).LAGS.Meta_means,COND(6).LAGS.Meta_SEMs); removeErrorBarEnds(ei);
+h = line([0 5],[.5 .5]);
+set(h, 'LineStyle',':','Color','k')
+box off
+set(vu,'LineWidth',2); set(vi,'LineWidth',2);
+set(eu,'LineStyle','none','LineWidth',3,'Color','c');
+set(ei,'LineStyle','none','LineWidth',3,'Color','y');
+set(gca,'XTick',1:4,'XTickLabel',{'-1','-3','-5','-7'},'TickDir','out');
+ylim([0.45 .75])
+xlim([0.25 4.75])
+legend('Incidental Memory','Explicit Memory')
+legend BOXOFF
+ylabel('Type-II AUC');
+xlabel('Lag Position');
+title('Inverted Face Memory Comparison: Metacognition');
+
+% REPORTABLE STATISTICS
 % Here's a summary of values that might be reported in the manuscript and
 % some basic significance testing.
 
