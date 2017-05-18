@@ -106,7 +106,7 @@ for condition = 1:6
         
         % Means and SEMs
         MEANS = mean(measure,1);
-        SEMS = std(measure,0,1)/sqrt(size(measure,1));
+        SEMS = within_subject_error(measure); % See github/julian-matthews/stats-tools
         
         if measures == 1
             COND(condition).LAGS.OP_means = MEANS;

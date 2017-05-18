@@ -3,7 +3,7 @@
  
 % Run the following to conduct analysis:
 % low_level_analysis % Or load RSVP-repeated-subj-data.mat
-simple_analysis
+simple_analysis % Computes within-subject error using O'Brien & Cousinea (2014)
 
 %% EXPERIMENT 1a: WITHIN-SCENE, UPRIGHT, INCIDENTAL MEMORY 
 % Twelve subjects took part in our replication of Kaunitz et al. (2016).
@@ -15,7 +15,7 @@ simple_analysis
 
 figure;
 hits = COND(1).RUNS.NUMS./40;
-deviation_hits = std(hits,0,2)/sqrt(size(hits,2)); % SEM
+deviation_hits = within_subject_error(hits); % within-subj SEM
 over_hits = sum(COND(1).RUNS.NUMS,2)./320;
 barwitherr(deviation_hits,over_hits);
 hold on
