@@ -1,5 +1,7 @@
-![alt text][logo]
-# Incidental memory during Rapid Serial Visual Presentation
+# Memorisation strategies during Rapid Serial Visual Presentation
+
+A summary of our design and core finding:
+![alt text][exemplar]
 
 ## What is this?
 Here we provide MATLAB code for our [psychophysics study of incidental memory](https://psyarxiv.com/yscdu). Our task employs **Rapid Serial Visual Presentation** (RSVP) to contrast incidental and explicit memory for upright and inverted faces. We found incidental memory has sustained conscious access and is likely to arise as a natural consequence of perception.
@@ -13,7 +15,7 @@ Here we provide MATLAB code for our [psychophysics study of incidental memory](h
 The critical m-files for running the experiment are in the [`scripts`](./scripts/run_experiment) subfolder.
 
 ## Methods:
-A simplified schematic of our 'incidental' RSVP task:
+A simplified schematic of our *incidental* RSVP task:
 
 ![methods]
 
@@ -27,6 +29,6 @@ Probes are selected from four positions or *lags* relative to the target: -1, -3
 
 [methods]: ../master/methods-figure-RSVP.png
 
-[logo]: https://cogphillab.files.wordpress.com/2018/09/rsvp-example2.gif
+[exemplar]: https://cogphillab.files.wordpress.com/2018/09/rsvp-example2.gif
 
 [avatar]: https://avatars0.githubusercontent.com/u/18410581?v=3&s=96 "I'm Julian"
