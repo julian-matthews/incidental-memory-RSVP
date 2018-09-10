@@ -1,5 +1,9 @@
 # Memorisation strategies during RSVP
 
+###### Julian Matthews, Jamin Wu, Vanessa Corneille, Jakob Hohwy, Jeroen van Boxtel, Naotsugu Tsuchiya
+
+***
+
 ![alt text][exemplar]
 
 ## What is this?
