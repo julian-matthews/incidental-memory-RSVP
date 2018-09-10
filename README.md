@@ -7,7 +7,7 @@
 ![alt text][exemplar]
 
 ## What is this?
-Here we provide MATLAB code for our [psychophysics study of incidental memory](https://psyarxiv.com/yscdu). Our task employs **Rapid Serial Visual Presentation** (RSVP) to contrast incidental and explicit memory for upright and inverted faces. We found incidental memory has sustained conscious access and is likely to arise as a natural consequence of perception.
+Here we provide MATLAB code for our [psychophysical study of incidental memory](https://psyarxiv.com/yscdu). Our task employs **Rapid Serial Visual Presentation** (RSVP) to contrast incidental and explicit memory for upright and inverted faces. We found incidental memory has sustained conscious access and is likely to arise as a natural consequence of perception.
 
 ## You will need: 
 1. **MATLAB**
