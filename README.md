@@ -1,6 +1,5 @@
-# Memorisation strategies during Rapid Serial Visual Presentation
+# Memorisation strategies during RSVP
 
-A summary of our design and core finding:
 ![alt text][exemplar]
 
 ## What is this?
