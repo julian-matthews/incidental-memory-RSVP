@@ -4,6 +4,10 @@
 
 ***
 
+[**The paper that implements this code has been published in Attention, Perception, & Psychophysics. It is available here.**](https://link.springer.com/article/10.3758/s13414-018-1600-1)
+
+> In visual search of natural scenes, differentiation of briefly fixated but task-irrelevant distractor items from incidental memory is often comparable to explicit memorization. However, many characteristics of incidental memory remain unclear, including the capacity for its conscious retrieval. Here, we examined incidental memory for faces in either upright or inverted orientation using Rapid Serial Visual Presentation (RSVP). Subjects were instructed to detect a target face in a sequence of 8–15 faces cropped from natural scene photographs (Experiment 1). If the target face was identified within a brief time window, the subject proceeded to an incidental memory task. Here, subjects used incidental memory to discriminate between a probe face (a distractor in the RSVP stream) and a novel, foil face. In Experiment 2 we reduced scene-related semantic coherency by intermixing faces from multiple scenes and contrasted incidental memory with explicit memory, a condition where subjects actively memorized each face from the sequence without searching for a target. In both experiments, we measured objective performance (Type 1 AUC) and metacognitive accuracy (Type 2 AUC), revealing sustained and consciously accessible incidental memory for upright and inverted faces. In novel analyses of face categories, we examined whether accuracy or metacognitive judgments are affected by shared semantic features (i.e., similarity in gender, race, age). Similarity enhanced the accuracy of incidental memory discriminations but did not influence metacognition. We conclude that incidental memory is sustained and consciously accessible, is not reliant on scene contexts, and is not enhanced by explicit memorization.
+
 ![alt text][exemplar]
 
 ## What is this?
